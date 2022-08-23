@@ -2,7 +2,7 @@ package token
 
 import (
 	"context"
-	"ecommerce/database"
+	"gincommerce/database"
 	"log"
 	"os"
 	"time"

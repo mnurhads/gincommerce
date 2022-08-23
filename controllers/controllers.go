@@ -2,9 +2,9 @@ package controllers
 
 import (
 	"context"
-	"ecommerce/database"
-	"ecommerce/models"
-	generate "ecommerce/tokens"
+	"gincommerce/database"
+	"gincommerce/models"
+	generate "gincommerce/tokens"
 	"fmt"
 	"log"
 	"net/http"
