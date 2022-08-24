@@ -30,6 +30,9 @@ type Product struct {
 	Price        *uint64            `json:"price"`
 	Rating       *uint8             `json:"rating"`
 	Image        *string            `json:"image"`
+	Stock	     *uint8 			`json:"stock"`
+	Review	     *string			`json:"review"`
+	Detail		 []Color			`json:"detail"`
 }
 
 type ProductUser struct {
@@ -38,6 +41,9 @@ type ProductUser struct {
 	Price        int                `json:"price"  bson:"price"`
 	Rating       *uint              `json:"rating" bson:"rating"`
 	Image        *string            `json:"image"  bson:"image"`
+	Stock	     *uint8 			`json:"stock" bson:"stock"`
+	Review	     *string			`json:"review" bson:"review"`
+	Detail		 []Color			`json:"detail" bson:"detail"`
 }
 
 type Address struct {
@@ -46,6 +52,8 @@ type Address struct {
 	Street     *string            `json:"street_name" bson:"street_name"`
 	City       *string            `json:"city_name" bson:"city_name"`
 	Pincode    *string            `json:"pin_code" bson:"pin_code"`
+	Address    []AddressNew       `json:"address" bson:"address"`
+	Code       []Code 			  `json:"code" bson:"code"`
 }
 
 type Order struct {
@@ -60,4 +68,27 @@ type Order struct {
 type Payment struct {
 	Digital bool `json:"digital" bson:"digital"`
 	COD     bool `json:"cod"     bson:"cod"`
+}
+
+// new
+type Color struct {
+	Color		*string			   `json:"color" bson:"color"`
+	Corak		*string			   `json:"corak" bson:"corak"`
+	Motif		*string			   `json:"motif" bson:"motif"`
+}
+
+type AddressNew struct {
+	Rt 			*string		`json:"rt" bson:"rt"`
+	Rw 			*string		`json:"rw" bson:"rw"`
+	Village 	*string		`json:"village" bson:"village"`
+	Kecamatan 	*string		`json:"kecamatan" bson:"kecamatan"`
+	Kabupaten 	*string		`json:"kabupaten" bson:"kabupaten"`
+	Kota		*string     `json:"kota" bson:"kota"`
+	Provinsi    *string     `json:"provinsi" bson:"provinsi"`
+}
+
+type Code struct {
+	Latitude	*string 	`json:"latitude" bson:"latitude"`
+	Longitude	*string		`json:"longitude" bson:"longitude"`
+	Marker		*string		`json:"marker" bson:"marker"`
 }
