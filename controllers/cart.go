@@ -27,19 +27,12 @@ func NewApplication(prodCollection, userCollection *mongo.Collection) *Applicati
 	}
 }
 
-// AddToCart adds products to the cart of the user.
-// GET request
-// http://localhost:8000/addtocart?id=xxxproduct_id&normal=xxxxxxuser_idxxxxxx
-
 func (app *Application) AddToCart() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		// Validate the input of the user
 		productQueryID := c.Query("id")
 		if productQueryID == "" {
 			log.Println("product id is empty")
-			// Gin has this c.Errors that is supposed to be used to catch
-			// all errors that are generated in your handler. I don't understand
-			// why you would use that so I'm ignoring it here.
 			_ = c.AbortWithError(http.StatusBadRequest, errors.New("product id is empty"))
 			return
 		}
@@ -66,17 +59,12 @@ func (app *Application) AddToCart() gin.HandlerFunc {
 
 		err = database.AddProductToCart(ctx, app.prodCollection, app.userCollection, productID, userQueryID)
 		if err != nil {
-			// This error is actually controlled by us so we don't leak any
-			// sensitive information about our mongodb server or what went wrong.
 			c.IndentedJSON(http.StatusInternalServerError, err)
 		}
 		c.IndentedJSON(200, "Successfully Added to the cart")
 	}
 }
 
-//function to remove item from cart
-//GET Request
-//http://localhost:8000/addtocart?id=xxxproduct_id&normal=xxxxxxuser_idxxxxxx
 func (app *Application) RemoveItem() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		productQueryID := c.Query("id")
@@ -110,11 +98,6 @@ func (app *Application) RemoveItem() gin.HandlerFunc {
 	}
 }
 
-//function to get all items in the cart and total price
-//GET request
-//http://localhost:8000/listcart?id=xxxxxxuser_idxxxxxxxxxx
-//help to add dependency injection
-//Any nice way to group together this json response?
 func GetItemFromCart() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		user_id := c.Query("id")

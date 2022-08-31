@@ -35,8 +35,6 @@ func main() {
 	router.GET("/delete/addresses", controllers.DeleteAddress())
 	router.GET("/cart/checkout", app.BuyFromCart())
 	router.GET("/instant/buy", app.InstantBuy())
-	//router.GET("logout", controllers.Logout())
-	//break :)
 
 	// Log the error that the router can possibly return.
 	log.Fatal(router.Run(":" + port))
