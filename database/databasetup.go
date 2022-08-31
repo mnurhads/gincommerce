@@ -12,7 +12,7 @@ import (
 )
 
 func DBSet() *mongo.Client {
-	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&3t.uriVersion=3&3t.connection.name=Laragon+-+imported+on+Aug+11%2C+2022&3t.alwaysShowAuthDB=true&3t.alwaysShowDBFromUserRole=true"))
+	client, err := mongo.NewClient(options.Client().ApplyURI("mongodb://localhost:27017/?serverSelectionTimeoutMS=5000&connectTimeoutMS=10000&3t.uriVersion=3&3t.connection.name=hadidev+-+imported+on+Aug+11%2C+2022&3t.alwaysShowAuthDB=true&3t.alwaysShowDBFromUserRole=true"))
 	if err != nil {
 		log.Fatal(err)
 	}
