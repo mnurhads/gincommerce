@@ -7,8 +7,8 @@ import (
 	"gincommerce/routes"
 	"log"
 	"os"
-
 	"github.com/gin-gonic/gin"
+	_ "github.com/netinternet/remoteaddr"
 )
 
 func main() {

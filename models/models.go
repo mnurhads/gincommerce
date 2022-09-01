@@ -2,7 +2,6 @@ package models
 
 import (
 	"time"
-
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -15,6 +14,8 @@ type User struct {
 	Email           *string            `json:"email"      validate:"email,required"`
 	Phone           *string            `json:"phone"      validate:"required"`
 	Token           *string            `json:"token"`
+	// new
+	UserIP			string			   `json:"user_ip"`
 	Refresh_Token   *string            `josn:"refresh_token"`
 	Created_At      time.Time          `json:"created_at"`
 	Updated_At      time.Time          `json:"updtaed_at"`
