@@ -15,7 +15,7 @@ func main() {
 	// But you should do this for all config: mongodb (credentials, database, collections), SECRET_KEY in tokengen.go.
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8000"
+		port = "9090"
 	}
 
 	app := controllers.NewApplication(database.ProductData(database.Client, "Products"), database.UserData(database.Client, "Users"))

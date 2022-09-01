@@ -47,3 +47,8 @@ func ProductData(client *mongo.Client, CollectionName string) *mongo.Collection 
 	return productcollection
 }
 
+func LogData(client *mongo.Client, CollectionName string) *mongo.Collection {
+	var logCollection  *mongo.Collection = client.Database("Ecommerce").CollectionName(CollectionName)
+	return logCollection
+}
+
