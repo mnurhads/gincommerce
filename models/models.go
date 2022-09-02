@@ -35,10 +35,9 @@ type Product struct {
 }
 
 type Log struct {
-	LogID 		 primitive.ObjectID 	`bson:"_id" json:"_id"`
-	UserID 		 *string		 		`json:"user_id" bson:"user_id"`
-	LogDesc		 *string 				`json:"log_desc" bson:"log_dec"`
-	StatusOn     *string				`json:"status_on" bson:"status_on"`
+	LogID 		 primitive.ObjectID 	`bson:"_id"`
+	UserID 		 string		 			`json:"user_id" bson:"user_id"`
+	UserIP		 string 				`json:"user_ip" bson:"user_ip"`
 	CreatedAt	 time.Time				`json:"created_t" bson:"created_at"`
 }
 

@@ -18,7 +18,11 @@ func main() {
 		port = "9090"
 	}
 
-	app := controllers.NewApplication(database.ProductData(database.Client, "Products"), database.UserData(database.Client, "Users"))
+	app := controllers.NewApplication(
+		database.ProductData(database.Client, "Products"), 
+		database.UserData(database.Client, "Users"), 
+		database.LogData(database.Client, "Logs"),
+	)
 
 	router := gin.New()
 	router.Use(gin.Logger())

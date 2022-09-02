@@ -48,7 +48,7 @@ func ProductData(client *mongo.Client, CollectionName string) *mongo.Collection 
 }
 
 func LogData(client *mongo.Client, CollectionName string) *mongo.Collection {
-	var logCollection  *mongo.Collection = client.Database("Ecommerce").CollectionName(CollectionName)
-	return logCollection
+	var LogCollection *mongo.Collection = client.Database("Ecommerce").Collection(CollectionName)
+	return LogCollection
 }
 

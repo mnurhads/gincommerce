@@ -23,6 +23,7 @@ import (
 // Again, global vars, try to avoid them and use dependency injection instead.
 var UserCollection *mongo.Collection = database.UserData(database.Client, "Users")
 var ProductCollection *mongo.Collection = database.ProductData(database.Client, "Products")
+var LogCollection  *mongo.Collection = database.LogData(database.Client, "Logs")
 var Validate = validator.New()
 
 func HashPassword(password string) string {
@@ -49,6 +50,9 @@ func SignUp() gin.HandlerFunc {
 		var ctx, cancel = context.WithTimeout(context.Background(), 100*time.Second)
 		defer cancel()
 		var user models.User
+		// new model
+		//var cnx = context.WithTimeout(context.Background(), 100*time.Second)
+		var logFile models.Log
 		if err := c.BindJSON(&user); err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
@@ -98,6 +102,14 @@ func SignUp() gin.HandlerFunc {
 			c.JSON(http.StatusInternalServerError, gin.H{"error": "not created"})
 			return
 		}
+
+		// insert to tabel log
+		logFile.LogID 		= primitive.NewObjectID()
+		logFile.UserID 		= user.User_ID
+		logFile.UserIP		= c.ClientIP()
+		logFile.CreatedAt 	= user.Created_At
+	    LogCollection.InsertOne(ctx, logFile)
+
 		defer cancel()
 		c.JSON(http.StatusCreated, "Successfully Signed Up!!")
 	}
