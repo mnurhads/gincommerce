@@ -20,7 +20,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-// Again, global vars, try to avoid them and use dependency injection instead.
 var UserCollection *mongo.Collection = database.UserData(database.Client, "Users")
 var ProductCollection *mongo.Collection = database.ProductData(database.Client, "Products")
 var LogCollection  *mongo.Collection = database.LogData(database.Client, "Logs")

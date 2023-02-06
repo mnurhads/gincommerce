@@ -1,6 +1,5 @@
 package database
 
-//
 import (
 	"context"
 	"fmt"
@@ -29,7 +28,6 @@ func DBSet() *mongo.Client {
 		return nil
 	}
 
-	// This doesn't work, even if you don't have mongodb running this line still prints.
 	fmt.Println("Successfully Connected to the mongodb")
 	return client
 }

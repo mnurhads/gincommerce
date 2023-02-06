@@ -12,7 +12,6 @@ import (
 )
 
 func main() {
-	// But you should do this for all config: mongodb (credentials, database, collections), SECRET_KEY in tokengen.go.
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "9090"
